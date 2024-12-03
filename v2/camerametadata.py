@@ -7,7 +7,7 @@ from v2.person import Person
 class CameraMetadata:
     camera_id: str
     timestamp: str
-    persons: List[Person]  
+    persons: List[Person]  = None
     emmbedding_complete : bool = False
     keypoint_complete : bool = False
 
