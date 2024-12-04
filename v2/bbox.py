@@ -1,17 +1,10 @@
-from dataclasses import dataclass
-from typing import Optional, List
+from pydantic import BaseModel
 
-@dataclass
-class BBox:
+class BBox(BaseModel):
     xmin: float
     xmax: float
     ymin: float
     ymax: float
     conf: float
+    
 
-    def __init__(self, xmin: float, xmax: float, ymin: float, ymax: float, conf: float):
-        self.xmin = xmin
-        self.xmax = xmax
-        self.ymin = ymin
-        self.ymax = ymax
-        self.conf = conf
