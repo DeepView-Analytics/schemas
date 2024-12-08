@@ -1,9 +1,8 @@
-
-from pydantic import BaseModel
-
+from pydantic import BaseModel, Field
+from typing import List
 
 class FrameMetadata(BaseModel):
     frame_key: str
-    detected_persons : list[str] 
-    keypoint_complete: bool
-    embeding_complete: bool
+    detected_persons: List[str] = Field(default_factory=list) 
+    keypoint_complete: bool = False  
+    embeding_complete: bool = False  

@@ -1,14 +1,20 @@
-
+from dataclasses import dataclass, field
+from typing import Optional
+import uuid
 from pydantic import BaseModel
-
 from v3.bbox import BBox
 
-class DetectedPerson(BaseModel):
-    person_key: str
-    frame_key: str
-    bbox : BBox 
-    embedding_key: str
-    keypoint_key: str
-    is_face_clear: bool
-    
+@dataclass
+class DetectionMetadata(BaseModel):
+    person_key: str = field(default_factory=lambda: str(uuid.uuid4()))
+    frame_key: Optional[str] = None
+    bbox: Optional[BBox] = None 
+    embedding_key: Optional[str] = None
+    keypoint_key: Optional[str] = None
+    is_face_clear: bool = False
 
+    def __init__(self, **data):
+
+        if 'person_key' not in data:
+            data['person_key'] = str(uuid.uuid4())
+        super().__init__(**data)
