@@ -12,7 +12,7 @@ class DetectionMetadata(BaseModel):
     embedding_key: Optional[str] = None
     keypoint_key: Optional[str] = None
     is_face_clear: bool = False
-
+    face_bbox: Optional[BBox] = None 
     def __init__(self, **data):
 
         if 'person_key' not in data:
